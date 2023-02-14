@@ -1,2 +1,2 @@
 # configlib
-Dynamic config library for pocketmine
+Dynamic config library
