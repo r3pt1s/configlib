@@ -24,9 +24,11 @@ class Configuration {
             $contents = ($this->getType() == Configuration::TYPE_YAML ? yaml_parse($contents) : json_decode($contents, true, flags: JSON_THROW_ON_ERROR));
 
             foreach ((new ReflectionClass($this))->getProperties() as $property) {
-                $property->setAccessible(true);
-                if (array_key_exists($property->getName(), $contents)) {
-                    $property->setValue($this, $contents[$property->getName()]);
+                if (!str_contains($property->getDocComment(), "@ignored")) {
+                    $property->setAccessible(true);
+                    if (array_key_exists($property->getName(), $contents)) {
+                        $property->setValue($this, $contents[$property->getName()]);
+                    }
                 }
             }
             return true;
@@ -40,8 +42,10 @@ class Configuration {
     public function save(): bool {
         $contents = [];
         foreach ((new ReflectionClass($this))->getProperties() as $property) {
-            $property->setAccessible(true);
-            $contents[$property->getName()] = $property->getValue($this);
+            if (!str_contains($property->getDocComment(), "@ignored")) {
+                $property->setAccessible(true);
+                $contents[$property->getName()] = $property->getValue($this);
+            }
         }
 
         $contents = ($this->getType() == Configuration::TYPE_YAML ? yaml_emit($contents, YAML_UTF8_ENCODING) : json_encode($contents, JSON_PRETTY_PRINT | JSON_BIGINT_AS_STRING | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
