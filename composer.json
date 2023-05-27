@@ -1,0 +1,22 @@
+{
+  "name": "r3pt1s/configlib",
+  "type": "library",
+  "description": "Dynamic config library",
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "r3pt1s\\configlib\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "virion": {
+      "spec": "3.0",
+      "namespace-root": "r3pt1s\\configlib"
+    }
+  }
+}
