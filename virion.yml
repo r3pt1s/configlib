@@ -2,6 +2,6 @@ name: configlib
 authors:
   - r3pt1s
 version: 1.0.0
-antigen: r3pt1s/configlib
+antigen: configlib
 api:
   - 4.0.0
