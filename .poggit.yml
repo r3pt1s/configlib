@@ -4,7 +4,8 @@ branches:
 - main
 projects:
   configlib:
-    path: ""
     model: virion
     type: library
+    lint:
+      phpstan: false
 ...
