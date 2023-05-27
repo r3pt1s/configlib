@@ -1,6 +1,7 @@
 {
   "name": "r3pt1s/configlib",
   "type": "library",
+  "license": "Apache-2.0",
   "description": "Dynamic config library",
   "minimum-stability": "dev",
   "autoload": {
