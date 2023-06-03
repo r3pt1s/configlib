@@ -2,6 +2,8 @@
 
 namespace configlib;
 
+use ReflectionClass;
+
 class Configuration {
 
     public const KNOWN_TYPES = [
